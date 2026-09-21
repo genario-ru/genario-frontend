@@ -8,7 +8,7 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_SERVICE: frontend
+  IMAGE_SERVICE: genario-frontend
   IMAGE_TAG: latest
   RELEASE: ${{ github.sha }}
   GLITCHTIP_DIST_DIR: .tmp/glitchtip-dist
