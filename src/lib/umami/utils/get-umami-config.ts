@@ -1,17 +1,19 @@
 import { envs } from "@/shared/constants/envs";
 import { isCookieConsentAccepted } from "@/shared/utils/cookie-consent";
 
-import type { YMConfig } from "../types/ym-config";
+import type { UmamiConfig } from "../types/umami-config";
 
-export function getYMConfig(): YMConfig {
-  const id = envs.VITE_YANDEX_METRIKA_ID;
+export function getUmamiConfig(): UmamiConfig {
+  const url = envs.VITE_UMAMI_URL;
+  const websiteId = envs.VITE_UMAMI_WEBSITE_ID;
   const isProduction = envs.MODE === "production";
   const isConsentAccepted = isCookieConsentAccepted();
 
-  if (id && isConsentAccepted && isProduction) {
+  if (url && websiteId && isConsentAccepted && isProduction) {
     return {
-      id,
       enabled: true,
+      url,
+      websiteId,
     };
   }
 

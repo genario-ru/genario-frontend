@@ -1,10 +1,10 @@
 import type { LinkComponentProps } from "@tanstack/react-router";
 
-import type { YMGoal } from "@/lib/yandex-metrika";
+import type { AnalyticsEvent } from "@/lib/umami";
 
 type CommonFooterLinkItemStatic = {
   title: string;
-  goal: YMGoal;
+  goal: AnalyticsEvent;
 };
 
 type CommonFooterLinkItemLocal = LinkComponentProps;

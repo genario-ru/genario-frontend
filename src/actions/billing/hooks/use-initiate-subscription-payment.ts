@@ -1,8 +1,8 @@
 import { usePostApiV1SubscriptionsInitiatePayment } from "@/codegen/api/product";
-import { useReachGoal } from "@/lib/yandex-metrika";
+import { useTrackEvent } from "@/lib/umami";
 
 export function useInitiateSubscriptionPayment() {
-  const reachGoal = useReachGoal();
+  const trackEvent = useTrackEvent();
 
   const {
     mutate: initiateSubscriptionPayment,
@@ -16,7 +16,7 @@ export function useInitiateSubscriptionPayment() {
           ? "trial-payment-start"
           : "subscription-payment-start";
 
-        reachGoal(goal);
+        trackEvent(goal);
       },
     },
   });

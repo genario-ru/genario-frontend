@@ -1,15 +1,15 @@
 import { usePostApiV1IdeasListsByIdeasListIdExport } from "@/codegen/api/product";
-import { useReachGoal } from "@/lib/yandex-metrika";
+import { useTrackEvent } from "@/lib/umami";
 
 export function useCreateIdeasListExport() {
-  const reachGoal = useReachGoal();
+  const trackEvent = useTrackEvent();
 
   const {
     mutate: createIdeasListExport,
     isPending: isCreateIdeasListExportPending,
   } = usePostApiV1IdeasListsByIdeasListIdExport({
     mutation: {
-      onSuccess: () => reachGoal("ideas-list-export-request"),
+      onSuccess: () => trackEvent("ideas-list-export-request"),
     },
   });
 

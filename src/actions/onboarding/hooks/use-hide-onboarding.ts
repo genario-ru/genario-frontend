@@ -6,7 +6,7 @@ import {
   type GetApiV1AuthSessionQueryResponse,
   usePatchApiV1AuthUser,
 } from "@/codegen/api/product";
-import { useReachGoal } from "@/lib/yandex-metrika";
+import { useTrackEvent } from "@/lib/umami";
 import { useToast } from "@/shared/hooks/use-toast";
 
 type HideOnboardingContext = {
@@ -15,7 +15,7 @@ type HideOnboardingContext = {
 
 export function useHideOnboarding() {
   const queryClient = useQueryClient();
-  const reachGoal = useReachGoal();
+  const trackEvent = useTrackEvent();
   const { showErrorToast } = useToast();
   const sessionQueryKey = getApiV1AuthSessionQueryKey();
 
@@ -48,7 +48,7 @@ export function useHideOnboarding() {
           return { previousSessionData };
         },
         onSuccess: () => {
-          reachGoal("onboarding-hide");
+          trackEvent("onboarding-hide");
         },
         onError: (_error, _variables, context) => {
           if (context?.previousSessionData) {

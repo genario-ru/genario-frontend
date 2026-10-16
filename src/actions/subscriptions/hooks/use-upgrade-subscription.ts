@@ -1,8 +1,8 @@
 import { usePostApiV1SubscriptionsUpgrade } from "@/codegen/api/product";
-import { useReachGoal } from "@/lib/yandex-metrika";
+import { useTrackEvent } from "@/lib/umami";
 
 export function useUpgradeSubscription() {
-  const reachGoal = useReachGoal();
+  const trackEvent = useTrackEvent();
 
   const {
     mutate: upgradeSubscription,
@@ -11,7 +11,7 @@ export function useUpgradeSubscription() {
     isSuccess: isUpgradeSubscriptionSuccess,
   } = usePostApiV1SubscriptionsUpgrade({
     mutation: {
-      onSuccess: () => reachGoal("subscription-upgrade"),
+      onSuccess: () => trackEvent("subscription-upgrade"),
     },
   });
 

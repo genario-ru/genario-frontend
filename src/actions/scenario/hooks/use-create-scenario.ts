@@ -5,19 +5,19 @@ import {
   usePostApiV1Scenarios,
 } from "@/codegen/api/product";
 import { isPaymentRequiredError } from "@/lib/api/utils/is-payment-required-error";
-import { useReachGoal } from "@/lib/yandex-metrika";
+import { useTrackEvent } from "@/lib/umami";
 import { useToast } from "@/shared/hooks/use-toast";
 
 export function useCreateScenario() {
   const queryClient = useQueryClient();
-  const reachGoal = useReachGoal();
+  const trackEvent = useTrackEvent();
   const { showErrorToast } = useToast();
 
   const { mutate: createScenario, isPending: isCreateScenarioPending } =
     usePostApiV1Scenarios({
       mutation: {
         onSuccess: () => {
-          reachGoal("scenario-generation-start");
+          trackEvent("scenario-generation-start");
 
           queryClient.invalidateQueries({
             queryKey: getApiV1OnboardingQueryKey(),

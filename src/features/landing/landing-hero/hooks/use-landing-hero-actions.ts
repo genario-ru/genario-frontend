@@ -1,13 +1,13 @@
 import { useCallback } from "react";
 
-import { useReachGoal } from "@/lib/yandex-metrika";
+import { useTrackEvent } from "@/lib/umami";
 
 export function useLandingHeroActions() {
-  const reachGoal = useReachGoal();
+  const trackEvent = useTrackEvent();
 
   const handleClick = useCallback(
-    () => reachGoal("trial-tariff-anchor-link-click"),
-    [reachGoal],
+    () => trackEvent("trial-tariff-anchor-link-click"),
+    [trackEvent],
   );
 
   return { handleClick };

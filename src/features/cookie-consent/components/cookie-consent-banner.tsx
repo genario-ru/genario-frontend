@@ -17,9 +17,9 @@ export function CookieConsentBanner() {
     <div className="pointer-events-none fixed inset-x-0 bottom-0 z-2 p-4">
       <Island className="bg-neutral-8/80 dark:bg-neutral-8/90 pointer-events-auto mx-auto max-w-xl backdrop-blur-sm">
         <p className="text-neutral-1 text-sm">
-          Мы используем файлы cookie для корректной работы сайта, сохранения
-          ваших настроек и улучшения сервиса. Нажимая «Принять», вы даете
-          согласие на обработку файлов cookie на условиях{SPACE}
+          Мы используем веб-аналитику, чтобы понимать, как люди пользуются
+          сервисом. Без вашего согласия ничего не собирается. Подробнее — в
+          {SPACE}
           <Link
             to="/legal/$slug"
             params={{ slug: "cookie-policy" }}
@@ -27,7 +27,7 @@ export function CookieConsentBanner() {
             rel="noopener noreferrer"
             className="hover:text-neutral-2 underline underline-offset-2"
           >
-            политики использования Cookie
+            политике cookie
           </Link>
           .
         </p>

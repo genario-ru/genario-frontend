@@ -117,7 +117,8 @@ jobs:
           build-args: |
             VITE_BASE_URL=${{ secrets.VITE_BASE_URL }}
             VITE_BASE_API_URL=${{ secrets.VITE_BASE_API_URL }}
-            VITE_YANDEX_METRIKA_ID=${{ secrets.VITE_YANDEX_METRIKA_ID }}
+            VITE_UMAMI_URL=${{ secrets.VITE_UMAMI_URL }}
+            VITE_UMAMI_WEBSITE_ID=${{ secrets.VITE_UMAMI_WEBSITE_ID }}
             VITE_GLITCHTIP_DSN=${{ secrets.VITE_GLITCHTIP_DSN }}
             VITE_GLITCHTIP_ENVIRONMENT=${{ env.DEPLOY_ENVIRONMENT }}
             VITE_GLITCHTIP_RELEASE=${{ env.RELEASE }}

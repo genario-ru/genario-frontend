@@ -1,15 +1,15 @@
 import { usePostApiV1ScenariosByScenarioIdExport } from "@/codegen/api/product";
-import { useReachGoal } from "@/lib/yandex-metrika";
+import { useTrackEvent } from "@/lib/umami";
 
 export function useCreateScenarioExport() {
-  const reachGoal = useReachGoal();
+  const trackEvent = useTrackEvent();
 
   const {
     mutate: createScenarioExport,
     isPending: isCreateScenarioExportPending,
   } = usePostApiV1ScenariosByScenarioIdExport({
     mutation: {
-      onSuccess: () => reachGoal("scenario-export-request"),
+      onSuccess: () => trackEvent("scenario-export-request"),
     },
   });
 

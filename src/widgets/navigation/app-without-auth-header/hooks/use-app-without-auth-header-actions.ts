@@ -2,13 +2,13 @@ import { useCallback } from "react";
 
 import { useGetSession } from "@/actions/auth/hooks/use-get-session";
 import { useSignOut } from "@/actions/auth/hooks/use-sign-out";
-import { useReachGoal } from "@/lib/yandex-metrika";
+import { useTrackEvent } from "@/lib/umami";
 import { NBSP, RUBLE_SIGN } from "@/shared/constants/unicode";
 import { useBreakpoints } from "@/shared/hooks/use-breakpoints";
 
 export function useAppWithoutAuthHeaderActions() {
   const signOut = useSignOut();
-  const reachGoal = useReachGoal();
+  const trackEvent = useTrackEvent();
   const { isMobile } = useBreakpoints();
   const { sessionData, isSessionLoading } = useGetSession();
 
@@ -21,8 +21,8 @@ export function useAppWithoutAuthHeaderActions() {
   const isLoggedIn = Boolean(sessionData);
 
   const handleLoginClick = useCallback(
-    () => reachGoal("login-link-click"),
-    [reachGoal],
+    () => trackEvent("login-link-click"),
+    [trackEvent],
   );
 
   return {

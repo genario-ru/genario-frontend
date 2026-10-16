@@ -5,12 +5,12 @@ import {
   usePostApiV1ScenariosByScenarioIdMetadataRegenerate,
 } from "@/codegen/api/product";
 import { isPaymentRequiredError } from "@/lib/api/utils/is-payment-required-error";
-import { useReachGoal } from "@/lib/yandex-metrika";
+import { useTrackEvent } from "@/lib/umami";
 import { useToast } from "@/shared/hooks/use-toast";
 
 export function useRegenerateScenarioMetadata() {
   const queryClient = useQueryClient();
-  const reachGoal = useReachGoal();
+  const trackEvent = useTrackEvent();
   const { showErrorToast } = useToast();
 
   const {
@@ -19,7 +19,7 @@ export function useRegenerateScenarioMetadata() {
   } = usePostApiV1ScenariosByScenarioIdMetadataRegenerate({
     mutation: {
       onSuccess: (_data, variables) => {
-        reachGoal("scenario-metadata-regenerate");
+        trackEvent("scenario-metadata-regenerate");
 
         queryClient.invalidateQueries({
           queryKey: getApiV1ScenariosByScenarioIdMetadataQueryKey({

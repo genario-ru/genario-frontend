@@ -4,12 +4,12 @@ import {
   getApiV1IdeasListsByIdeasListIdQueryKey,
   usePatchApiV1IdeasByIdeaIdSave,
 } from "@/codegen/api/product";
-import { useReachGoal } from "@/lib/yandex-metrika";
+import { useTrackEvent } from "@/lib/umami";
 import { useToast } from "@/shared/hooks/use-toast";
 
 export function useSaveIdea() {
   const queryClient = useQueryClient();
-  const reachGoal = useReachGoal();
+  const trackEvent = useTrackEvent();
   const { showErrorToast } = useToast();
 
   const { mutate: saveIdea, isPending: isSaveIdeaPending } =
@@ -23,7 +23,7 @@ export function useSaveIdea() {
         },
         onSuccess: ({ data }) => {
           if (data.saved) {
-            reachGoal("idea-save");
+            trackEvent("idea-save");
           }
 
           queryClient.invalidateQueries({

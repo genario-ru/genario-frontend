@@ -1,8 +1,8 @@
 import { usePostApiV1AuthEmailOtpSignIn } from "@/codegen/api/product";
-import { useReachGoal } from "@/lib/yandex-metrika";
+import { useTrackEvent } from "@/lib/umami";
 
 export function useSignInEmailOtp() {
-  const reachGoal = useReachGoal();
+  const trackEvent = useTrackEvent();
 
   const {
     mutate: signIn,
@@ -10,7 +10,7 @@ export function useSignInEmailOtp() {
     isSuccess: isSignInSuccess,
   } = usePostApiV1AuthEmailOtpSignIn({
     mutation: {
-      onSuccess: () => reachGoal("sign-in-success"),
+      onSuccess: () => trackEvent("sign-in-success"),
     },
   });
 

@@ -1,8 +1,8 @@
 import { usePostApiV1CreditsPackagesInitiatePayment } from "@/codegen/api/product";
-import { useReachGoal } from "@/lib/yandex-metrika";
+import { useTrackEvent } from "@/lib/umami";
 
 export function useInitiateCreditsPackagePayment() {
-  const reachGoal = useReachGoal();
+  const trackEvent = useTrackEvent();
 
   const {
     mutate: initiateCreditsPackagePayment,
@@ -11,7 +11,7 @@ export function useInitiateCreditsPackagePayment() {
     isSuccess: isInitiateCreditsPackagePaymentSuccess,
   } = usePostApiV1CreditsPackagesInitiatePayment({
     mutation: {
-      onSuccess: () => reachGoal("credits-package-payment-start"),
+      onSuccess: () => trackEvent("credits-package-payment-start"),
     },
   });
 

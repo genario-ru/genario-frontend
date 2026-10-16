@@ -3,12 +3,13 @@ import { useEffect } from "react";
 
 import { useSessionFromContext } from "@/actions/auth/hooks/use-session-from-context";
 import { clearSentryUser, setSentryUser } from "@/lib/sentry";
-import { useYMUserParams } from "@/lib/yandex-metrika/hooks/use-ym-user-params";
+import { useAnalyticsIdentify, useAnalyticsPrivatePage } from "@/lib/umami";
 
 export function WithAuthComponent() {
   const sessionData = useSessionFromContext();
 
-  useYMUserParams(sessionData);
+  useAnalyticsIdentify({ sessionData });
+  useAnalyticsPrivatePage();
 
   useEffect(() => {
     setSentryUser(sessionData.user.id);

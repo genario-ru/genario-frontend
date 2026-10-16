@@ -1,13 +1,13 @@
 import { useCallback } from "react";
 
-import { useReachGoal } from "@/lib/yandex-metrika";
+import { useTrackEvent } from "@/lib/umami";
 
 export function useTariffCardSecondaryAction() {
-  const reachGoal = useReachGoal();
+  const trackEvent = useTrackEvent();
 
   const handleClick = useCallback(
-    () => reachGoal("tariff-card-secondary-button-click"),
-    [reachGoal],
+    () => trackEvent("tariff-card-secondary-button-click"),
+    [trackEvent],
   );
 
   return { handleClick };

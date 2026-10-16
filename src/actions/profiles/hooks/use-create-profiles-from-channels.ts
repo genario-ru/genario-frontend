@@ -1,8 +1,8 @@
 import { usePostApiV1ProfilesChannels } from "@/codegen/api/product";
-import { useReachGoal } from "@/lib/yandex-metrika";
+import { useTrackEvent } from "@/lib/umami";
 
 export function useCreateProfilesFromChannels() {
-  const reachGoal = useReachGoal();
+  const trackEvent = useTrackEvent();
 
   const {
     mutate: createProfilesFromChannels,
@@ -10,7 +10,7 @@ export function useCreateProfilesFromChannels() {
     isError: isCreateProfilesFromChannelsError,
   } = usePostApiV1ProfilesChannels({
     mutation: {
-      onSuccess: () => reachGoal("profile-import-start"),
+      onSuccess: () => trackEvent("profile-import-start"),
     },
   });
 

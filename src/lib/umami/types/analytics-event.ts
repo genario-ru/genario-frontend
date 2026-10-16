@@ -1,7 +1,7 @@
-// Идентификаторы целей Яндекс.Метрики. Список ограничен: в reachGoal можно
-// передать только значение из этого union — это даёт автоподсказку и защиту
-// от опечаток. При заведении новой цели в Метрике добавляйте её сюда.
-export type YMGoal =
+// Product events sent to Umami. The list is closed: useTrackEvent only accepts
+// a value from this union, which gives autocomplete and protection against
+// typos. Add an event here before it is used.
+export type AnalyticsEvent =
   // Лендинг и аутентификация
   | "sign-in-success"
   | "sign-in-button-click"
@@ -36,3 +36,6 @@ export type YMGoal =
   // Прочее
   | "onboarding-hide"
   | "account-delete-success";
+
+/** Event properties: flat values only, never personal data. */
+export type AnalyticsEventData = Record<string, string | number | boolean>;

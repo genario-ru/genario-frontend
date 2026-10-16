@@ -16,7 +16,7 @@ The product interface is in Russian; this document is in English.
 
 ## The problem
 
-A creator publishing regularly spends hours on work that happens *before* the camera turns
+A creator publishing regularly spends hours on work that happens _before_ the camera turns
 on: finding a topic that fits the channel, structuring the video so it holds attention,
 writing the voice-over, deciding what is on screen at each moment, and then rewriting the
 title and description separately for every platform. Most of that is repetitive
@@ -60,14 +60,14 @@ work instead of generic AI text.
 
 ## How the product works
 
-| Step | What the user does | What the system does |
-| --- | --- | --- |
-| **1. Profile** | Imports a YouTube/RuTube channel or describes the author, niche, audience and tone by hand; attaches reference videos, portraits and cover art | Pulls channel videos through an external video API, enriches them, and derives a reusable creative profile |
-| **2. Ideas** | Picks a template (review, tutorial, top-N, …), a tone and a target platform | Generates a list of video ideas grounded in the profile |
-| **3. Script** | Selects an idea | Builds chapters, then scenes inside each chapter — each with a timecode, voice-over line, visual direction and sound direction |
-| **4. Previews** | Requests a preview for a scene | Generates a still image illustrating that scene |
-| **5. Metadata** | Chooses the platforms to publish on | Writes a separate title, description and tag set per platform |
-| **6. Delivery** | Exports or revisits work | Renders DOCX/PDF exports; everything stays versioned and searchable in the archive |
+| Step            | What the user does                                                                                                                             | What the system does                                                                                                           |
+| --------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| **1. Profile**  | Imports a YouTube/RuTube channel or describes the author, niche, audience and tone by hand; attaches reference videos, portraits and cover art | Pulls channel videos through an external video API, enriches them, and derives a reusable creative profile                     |
+| **2. Ideas**    | Picks a template (review, tutorial, top-N, …), a tone and a target platform                                                                    | Generates a list of video ideas grounded in the profile                                                                        |
+| **3. Script**   | Selects an idea                                                                                                                                | Builds chapters, then scenes inside each chapter — each with a timecode, voice-over line, visual direction and sound direction |
+| **4. Previews** | Requests a preview for a scene                                                                                                                 | Generates a still image illustrating that scene                                                                                |
+| **5. Metadata** | Chooses the platforms to publish on                                                                                                            | Writes a separate title, description and tag set per platform                                                                  |
+| **6. Delivery** | Exports or revisits work                                                                                                                       | Renders DOCX/PDF exports; everything stays versioned and searchable in the archive                                             |
 
 Steps 2–5 are long-running AI jobs executed by backend workers, not synchronous requests.
 The client is therefore built around **job state** — pending, running, failed, ready — and
@@ -77,21 +77,21 @@ around partial results that appear in the UI as each chapter or scene completes.
 
 ## Tech stack
 
-| Area | Choice |
-| --- | --- |
-| Language / runtime | TypeScript (strict), React 19 |
-| Build | Vite 6, `tsc --noEmit` as a build gate, hidden source maps |
-| Routing | TanStack Router — file-based, automatic code splitting, typed search params via Zod |
-| Server state | TanStack Query |
-| Client state | Zustand |
-| Forms | TanStack Form with Zod 4 schemas |
-| Styling | Tailwind CSS v4, `class-variance-authority`, `tailwind-merge` |
-| Components | Radix UI and Base UI primitives, `cmdk`, `sonner`, Swiper, React Spring |
-| API layer | Kubb — TypeScript types, Zod schemas and React Query hooks generated from the backend's OpenAPI document |
-| i18n / theming | i18next (`en`/`ru`, typed resources), `next-themes` for light and dark |
-| Observability | Sentry SDK reporting to a self-hosted GlitchTip, Yandex Metrika, `web-vitals` |
-| PWA | `vite-plugin-pwa` (Workbox) with an installable manifest |
-| Quality | ESLint 9 flat config (React, hooks, `jsx-a11y`, `security`, `import`, `simple-import-sort`), Prettier |
+| Area               | Choice                                                                                                   |
+| ------------------ | -------------------------------------------------------------------------------------------------------- |
+| Language / runtime | TypeScript (strict), React 19                                                                            |
+| Build              | Vite 6, `tsc --noEmit` as a build gate, hidden source maps                                               |
+| Routing            | TanStack Router — file-based, automatic code splitting, typed search params via Zod                      |
+| Server state       | TanStack Query                                                                                           |
+| Client state       | Zustand                                                                                                  |
+| Forms              | TanStack Form with Zod 4 schemas                                                                         |
+| Styling            | Tailwind CSS v4, `class-variance-authority`, `tailwind-merge`                                            |
+| Components         | Radix UI and Base UI primitives, `cmdk`, `sonner`, Swiper, React Spring                                  |
+| API layer          | Kubb — TypeScript types, Zod schemas and React Query hooks generated from the backend's OpenAPI document |
+| i18n / theming     | i18next (`en`/`ru`, typed resources), `next-themes` for light and dark                                   |
+| Observability      | Sentry SDK reporting to a self-hosted GlitchTip, self-hosted Umami behind cookie consent, `web-vitals`   |
+| PWA                | `vite-plugin-pwa` (Workbox) with an installable manifest                                                 |
+| Quality            | ESLint 9 flat config (React, hooks, `jsx-a11y`, `security`, `import`, `simple-import-sort`), Prettier    |
 
 ---
 
@@ -113,14 +113,14 @@ src/
   globals/       Ambient TypeScript declarations
 ```
 
-| Layer | Answers the question |
-| --- | --- |
-| `routes` | *Where does this live, and who is allowed in?* |
-| `entrypoints` | *What does this page consist of?* |
-| `widgets` | *What is this large domain block?* |
-| `features` | *What reusable domain piece does it use?* |
-| `actions` | *How does the app talk to the API for this domain?* |
-| `shared` / `lib` | *What generic building blocks and infrastructure exist?* |
+| Layer            | Answers the question                                     |
+| ---------------- | -------------------------------------------------------- |
+| `routes`         | _Where does this live, and who is allowed in?_           |
+| `entrypoints`    | _What does this page consist of?_                        |
+| `widgets`        | _What is this large domain block?_                       |
+| `features`       | _What reusable domain piece does it use?_                |
+| `actions`        | _How does the app talk to the API for this domain?_      |
+| `shared` / `lib` | _What generic building blocks and infrastructure exist?_ |
 
 ---
 
@@ -203,13 +203,13 @@ exact commit that introduced it.
 
 ## Repository map
 
-| Path | Contents |
-| --- | --- |
-| `src/` | Application source, organised by the layers above |
-| `deps/api/product.json` | OpenAPI document the API client is generated from |
-| `public/locales/` | `en` and `ru` translation resources |
-| `docs/screenshots/` | Screenshots used in this document |
-| `.github/workflows/` | Build, publish and deploy pipeline |
+| Path                                             | Contents                                                        |
+| ------------------------------------------------ | --------------------------------------------------------------- |
+| `src/`                                           | Application source, organised by the layers above               |
+| `deps/api/product.json`                          | OpenAPI document the API client is generated from               |
+| `public/locales/`                                | `en` and `ru` translation resources                             |
+| `docs/screenshots/`                              | Screenshots used in this document                               |
+| `.github/workflows/`                             | Build, publish and deploy pipeline                              |
 | `AGENTS.md`, `CLAUDE.md`, `.cursor/`, `.agents/` | Working agreements and repeatable workflows for AI coding tools |
 
 ---

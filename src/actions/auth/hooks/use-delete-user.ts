@@ -2,20 +2,20 @@ import { useQueryClient } from "@tanstack/react-query";
 import { useNavigate } from "@tanstack/react-router";
 
 import { usePostApiV1AuthUserDelete } from "@/codegen/api/product";
-import { useReachGoal } from "@/lib/yandex-metrika";
+import { useTrackEvent } from "@/lib/umami";
 import { useToast } from "@/shared/hooks/use-toast";
 
 export function useDeleteUser() {
   const navigate = useNavigate();
   const queryClient = useQueryClient();
-  const reachGoal = useReachGoal();
+  const trackEvent = useTrackEvent();
   const { showErrorToast } = useToast();
 
   const { mutate: deleteUser, isPending: isDeleteUserPending } =
     usePostApiV1AuthUserDelete({
       mutation: {
         onSuccess: () => {
-          reachGoal("account-delete-success");
+          trackEvent("account-delete-success");
           queryClient.clear();
 
           navigate({
