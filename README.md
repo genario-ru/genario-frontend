@@ -210,7 +210,7 @@ exact commit that introduced it.
 | `public/locales/`                                | `en` and `ru` translation resources                             |
 | `docs/screenshots/`                              | Screenshots used in this document                               |
 | `.github/workflows/`                             | Build, publish and deploy pipeline                              |
-| `AGENTS.md`, `CLAUDE.md`, `.cursor/`, `.agents/` | Working agreements and repeatable workflows for AI coding tools |
+| `AGENTS.md`, `CLAUDE.md`, `.claude/`             | Working agreements and repeatable workflows for AI coding tools |
 
 ---
 

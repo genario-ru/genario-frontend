@@ -3,18 +3,7 @@
 
 INPUT="$(cat)"
 
-FILE="$(
-  printf '%s' "$INPUT" | python3 -c '
-import json
-import sys
-
-try:
-    data = json.load(sys.stdin)
-    print(data.get("tool_input", {}).get("file_path", "") or "")
-except Exception:
-    print("")
-'
-)"
+FILE=$(printf '%s' "$INPUT" | node -e 'let s="";process.stdin.on("data",d=>s+=d).on("end",()=>{try{console.log((JSON.parse(s).tool_input?.file_path||"").replace(/\\/g,"/"))}catch{console.log("")}})' 2>/dev/null)
 
 if [[ "$FILE" == *"/src/routes/"* ]] && [[ "$FILE" != *"route-tree.gen"* ]]; then
   echo "[hook] Route file modified: $(basename "$FILE") -> run: pnpm router:generate"

@@ -107,10 +107,7 @@ For any non-trivial code task, inspect the relevant local files before editing.
 
 ## Claude-Specific Guidance
 
-- Prefer the project commands in `.claude/commands/**` for repeatable workflows.
-- Use `.claude/agents/**` for focused review or diagnosis when a task spans
-  planning, FSD review, codegen adaptation, i18n, or TypeScript repair.
+- Prefer the project skills in `.claude/skills/**` for repeatable workflows and
+  focused reviews.
 - Do not add personal machine permissions or local preferences to committed
   project files. Use local settings for that.
-- If a Claude memory file disagrees with `AGENTS.md`, update the memory file
-  rather than following stale memory.

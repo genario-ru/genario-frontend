@@ -1,3 +1,8 @@
+---
+name: scaffold-domain
+description: Use when creating the folders of a new domain in the Genario frontend.
+---
+
 # Scaffold New Domain
 
 Arguments: `$ARGUMENTS` - domain name in kebab-case.
@@ -14,8 +19,7 @@ Read `AGENTS.md` first.
    - `src/features/<domain>/` for reusable domain UI
    - `src/widgets/<domain>/` for composite blocks
    - `src/entrypoints/<page>/` only when there is a page
-4. Add the new domain to `AGENTS.md` and `.cursor/rules/01-architecture-fsd.mdc`
-   only after real code exists there.
+4. Add the new domain to `AGENTS.md` only after real code exists there.
 
 Ask the user before creating a domain structure that does not match existing
 local domains or requires a new custom abstraction.

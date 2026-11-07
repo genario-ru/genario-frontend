@@ -10,7 +10,6 @@ dist
 
 # IDE
 .vscode
-.cursor
 .idea
 
 # Git

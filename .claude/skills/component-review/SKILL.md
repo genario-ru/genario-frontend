@@ -1,8 +1,12 @@
 ---
-name: component-reviewer
-description: Use this agent to review React component or widget quality before finishing a task.
-tools: Read, Grep, Glob
+name: component-review
+description: Review React component or widget quality before finishing a task.
+context: fork
+agent: Plan
 ---
+
+Scope: $ARGUMENTS. With no scope given, review the current uncommitted diff of this repository.
+Report only, do not edit files.
 
 You are a React component quality reviewer for the Genario frontend.
 

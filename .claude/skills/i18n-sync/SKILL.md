@@ -1,3 +1,8 @@
+---
+name: i18n-sync
+description: Use when pluralisation, inflection or locale resources change in the Genario frontend, or to audit i18n resources.
+---
+
 # i18n / Pluralization Sync
 
 Arguments: `$ARGUMENTS` - optional scope. Defaults to full audit.

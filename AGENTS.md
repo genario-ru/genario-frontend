@@ -31,8 +31,7 @@ Read these before making non-trivial changes:
 - `src/routes/README.md` for route file boundaries.
 - `kubb.config.ts` for API generation behavior.
 - `vite.config.ts` for router generation, PWA, aliases, and plugins.
-- `.cursor/rules/**`, `.agents/skills/**`, and `.claude/**` for scoped agent
-  workflows.
+- `.claude/skills/**` for repeatable agent workflows.
 
 If documentation disagrees with code/config, trust code/config first, then
 update the documentation in the same change.

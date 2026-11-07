@@ -1,8 +1,12 @@
 ---
-name: fsd-reviewer
-description: Use this agent to review code for FSD placement, import direction, generated-code boundaries, route-file boundaries, and misuse of shared/lib.
-tools: Read, Grep, Glob
+name: fsd-review
+description: Review code for FSD placement, import direction, generated-code boundaries, route-file boundaries, and misuse of shared/lib.
+context: fork
+agent: Plan
 ---
+
+Scope: $ARGUMENTS. With no scope given, review the current uncommitted diff of this repository.
+Report only, do not edit files.
 
 You are a Feature-Sliced Design architecture reviewer for the Genario frontend.
 

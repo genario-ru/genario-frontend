@@ -1,5 +1,4 @@
 {
-  "autoMemoryDirectory": ".claude/memory",
   "hooks": {
     "PostToolUse": [
       {
